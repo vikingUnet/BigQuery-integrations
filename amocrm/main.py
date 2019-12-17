@@ -17,6 +17,7 @@ def load_to_gbq(client, data, bq_configuration):
     job_config.write_disposition = 'WRITE_TRUNCATE'
     job_config.source_format = "NEWLINE_DELIMITED_JSON"
     job_config.autodetect = True
+    job_config.flatten_results = True
 
     load_job = client.load_table_from_file(
         data,
