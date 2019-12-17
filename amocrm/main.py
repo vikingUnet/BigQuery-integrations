@@ -77,7 +77,10 @@ def entities(amocrm_configuration, auth_cookies, entity):
                 if "first_name" not in element: 
                     element["first_name"] = None 
                 if "last_name" not in element: 
-                    element["last_name"] = None 
+                    element["last_name"] = None
+                for buf_tag in ("company", "leads", "tags", "custom_fields", "customers"):
+                    if buf_tag not in element:
+                        element[buf_tag] = None
             
             buf = json.dumps(element, ensure_ascii = False)
             buf = buf.replace('{}', 'null')
